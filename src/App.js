@@ -31,21 +31,24 @@ export default class App extends Component {
   handleInput = (val) => {
     this.setState((prevState) => {
       return {
-        input: prevState.input + val
+        input: prevState.solution ? val : prevState.input + val,
+        solution: false
       };
     });
   };
 
   handleClear() {
     return this.setState({
-      input: ""
+      input: "",
+      solution: false
     });
   }
 
   handleEqual() {
     this.setState((prevState) => {
       return {
-        input: evaluate(prevState.input)
+        input: evaluate(prevState.input),
+        solution: true
       };
     });
   }
